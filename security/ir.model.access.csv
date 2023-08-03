@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sequence_facturas_wsfe_sequence_facturas_wsfe,sequence_facturas_wsfe.sequence_facturas_wsfe,model_sequence_facturas_wsfe_sequence_facturas_wsfe,base.group_user,1,1,1,1
