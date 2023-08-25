@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="recuperar_from_afip_view_form" model="ir.ui.view">
+        <field name="name">recuperar.from.afip.form</field>
+        <field name="model">recuperar.from.afip</field>
+        <field name="arch" type="xml">
+            <form string="Recuperar comprobante desde AFIP">
+                <group>
+                    <field name="tipo_comprobante" />
+                    <field name="punto_venta" />
+                    <field name="comprobante" />
+                </group>
+                <group>
+                    <field name="product_id" />
+                </group>
+
+                <footer>
+                    <button string="Aceptar" class="oe_highlight" type="object" name="recuperar_comprobante_afip" />
+                    <button string="Cancelar" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window
+        name="Recuperar comprobante desde AFIP"
+        res_model="recuperar.from.afip"
+        binding_model="account.move"
+        binding_views="form"
+        view_mode="form"
+        target="new"
+        view_id="recuperar_from_afip_view_form"
+        id="action_invoice_recuperar_comprobante_afip"
+    />
+</odoo>
