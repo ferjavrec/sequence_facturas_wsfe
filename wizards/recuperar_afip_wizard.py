@@ -57,13 +57,17 @@ class RecuperarFromAfip(models.TransientModel):
         documento = str(ws.factura['nro_doc'])
         tipo_doc = str(ws.factura['tipo_doc'])
         Cliente = self.env['res.partner']
-        cliente = Cliente.search([('vat', '=', documento)])
+        cliente = Cliente.search([
+            ('vat', '=', documento),
+            ('type', '=', 'contact')
+        ])
         if not cliente:
             tipo_documento = self.env['l10n_latam.identification.type'].search([
                 ('l10n_ar_afip_code', '=', tipo_doc)])
             agregar_cliente = {
                 'name': 'Comprobante recuperado AFIP',
                 'vat': documento,
+                'type': 'contact',
                 'l10n_latam_identification_type_id': tipo_documento[0].id
             }
             cliente = Cliente.create(agregar_cliente)
